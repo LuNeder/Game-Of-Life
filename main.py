@@ -95,7 +95,7 @@ def vis():
             #
             print("alive-pos= " + str(alive))
             print("out-pos= " + str(pr_out))
-            #return alive
+            return alive
         pr_out.clear()
 
         for i in pr_in:
@@ -107,7 +107,7 @@ def vis():
             pr_in.remove(i)
             print("in-pos= " + str(pr_in))
             print("alive-pos-add= " + str(alive))
-            #return alive
+            return alive
         pr_in.clear()
         print("COMPARE() END")
 
