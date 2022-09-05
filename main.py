@@ -84,6 +84,34 @@ def draw():
 def vis():
     pr_in = []
     pr_out = []
+    def compare():
+        print("COMPARE() START")
+        for i in pr_out:
+            print("i= " + str(i))
+            print("alive= " + str(alive))
+            print("out= " + str(pr_out))
+            alive.remove(i)
+            pr_out.remove(i)
+            #
+            print("alive-pos= " + str(alive))
+            print("out-pos= " + str(pr_out))
+            #return alive
+        pr_out.clear()
+
+        for i in pr_in:
+            print("i= " + str(i))
+            print("alive= " + str(alive))
+            print("in= " + str(pr_in))
+                
+            alive.append(i)
+            pr_in.remove(i)
+            print("in-pos= " + str(pr_in))
+            print("alive-pos-add= " + str(alive))
+            #return alive
+        pr_in.clear()
+        print("COMPARE() END")
+
+
     for i in all:
         
         abs = str(i).replace('(','').replace(')','').split(', ') 
@@ -104,66 +132,27 @@ def vis():
             if s == 3:
                 print(str(i) + " born")
                 pr_in.append(i)
+                compare()
+                return pr_in
         else:
             if s >= 4:
                 print(str(i) + " dies")
                 pr_out.append(i)
+                compare()
+                return pr_out
             elif s < 2:
                 print(str(i) + " dies")
                 pr_out.append(i)
+                compare()
+                return pr_out
 
 
 
 
             
-    print("COMPARE() START")
-    for i in pr_out:
-        print("i= " + str(i))
-        print("alive= " + str(alive))
-        print("out= " + str(pr_out))
-        alive.remove(i)
-        pr_out.remove(i)
-        #
-        print("alive-pos= " + str(alive))
-        print("out-pos= " + str(pr_out))
-        #return alive
-    pr_out.clear()
-
-    for i in pr_in:
-        print("i= " + str(i))
-        print("alive= " + str(alive))
-        print("in= " + str(pr_in))
-            
-        alive.append(i)
-        pr_in.remove(i)
-        print("in-pos= " + str(pr_in))
-        print("alive-pos-add= " + str(alive))
-        #return alive
-    pr_in.clear()
-    print("COMPARE END")
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>> erroooooo <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-def compare():
-    print("COMPARE() START")
-    for i in pr_out:
-        print("i= " + str(i))
-        print("alive= " + str(alive))
-        print("out= " + str(pr_out))
-        alive.remove(i)
-        pr_out.remove(i)
-        #
-        print("alive-pos= " + str(alive))
-        return alive
-    pr_out.clear()
-
-    for i in pr_in:
-        if i not in alive:
-            alive.append(i)
-            pr_in.remove(i)
-            return alive
-    pr_in.clear()
-    print("COMPARE() END")
 #--------------------------------------------------------------------------
 
 count()
