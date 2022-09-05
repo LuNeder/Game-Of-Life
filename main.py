@@ -62,7 +62,7 @@ def count():
             cy = 0
             cy += 1
         else:
-            pass
+            nopass = ""
 
     
 #--------// Colisions//------------------------------------------------------------------
@@ -100,20 +100,22 @@ def vis():
 
 
         
-        if i in alive:
+        if i not in alive:
+            if s == 3:
+                print(str(i) + " born")
+                pr_in.append(i)
+        else:
             if s >= 4:
+                print(str(i) + " dies")
                 pr_out.append(i)
             elif s < 2:
+                print(str(i) + " dies")
                 pr_out.append(i)
-            elif s == 2 or s == 3:
-                pass
-        else:
-            if s == 3:
-                pr_in.append(i)
-            else:
-                pass
 
 
+
+
+            
     print("COMPARE() START")
     for i in pr_out:
         print("i= " + str(i))
@@ -124,14 +126,19 @@ def vis():
         #
         print("alive-pos= " + str(alive))
         print("out-pos= " + str(pr_out))
-        return alive
+        #return alive
     pr_out.clear()
 
     for i in pr_in:
-        if i not in alive:
-            alive.append(i)
-            pr_in.remove(i)
-            return alive
+        print("i= " + str(i))
+        print("alive= " + str(alive))
+        print("in= " + str(pr_in))
+            
+        alive.append(i)
+        pr_in.remove(i)
+        print("in-pos= " + str(pr_in))
+        print("alive-pos-add= " + str(alive))
+        #return alive
     pr_in.clear()
     print("COMPARE END")
 
