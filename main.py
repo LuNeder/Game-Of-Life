@@ -77,11 +77,14 @@ def draw():
             pygame.draw.rect(win, (0, 0, 0), (x, y, blockSize, blockSize))
 
 #--------// Rules//------------------------------------------------------------------
-pr_in = []
-pr_out = []
+
+#pr_in = []
+#pr_out = []
 
 def vis():
-  for i in all:
+    pr_in = []
+    pr_out = []
+    for i in all:
         
         abs = str(i).replace('(','').replace(')','').split(', ') 
         [fx, fy] = abs
@@ -90,7 +93,7 @@ def vis():
         
         vizinhos = [(fx-1, fy+1), (fx, fy+1), (fx+1, fy+1), (fx-1, fy), (fx+1, fy), (fx-1, fy-1), (fx, fy-1), (fx+1, fy-1) ]
 
-        s = sum(vs in vizinhos for vs in alive)
+        s = sum(vs in alive for vs in vizinhos)
         if s != 0:
             print(i, s)
             
@@ -110,19 +113,50 @@ def vis():
             else:
                 pass
 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>> erroooooo <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-def compare():
+    print("COMPARE() START")
     for i in pr_out:
-        print(i)
+        print("i= " + str(i))
+        print("alive= " + str(alive))
+        print("out= " + str(pr_out))
         alive.remove(i)
+        pr_out.remove(i)
+        #
+        print("alive-pos= " + str(alive))
+        print("out-pos= " + str(pr_out))
         return alive
+    pr_out.clear()
 
     for i in pr_in:
         if i not in alive:
             alive.append(i)
+            pr_in.remove(i)
             return alive
+    pr_in.clear()
+    print("COMPARE END")
 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>> erroooooo <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+def compare():
+    print("COMPARE() START")
+    for i in pr_out:
+        print("i= " + str(i))
+        print("alive= " + str(alive))
+        print("out= " + str(pr_out))
+        alive.remove(i)
+        pr_out.remove(i)
+        #
+        print("alive-pos= " + str(alive))
+        return alive
+    pr_out.clear()
+
+    for i in pr_in:
+        if i not in alive:
+            alive.append(i)
+            pr_in.remove(i)
+            return alive
+    pr_in.clear()
+    print("COMPARE() END")
 #--------------------------------------------------------------------------
 
 count()
@@ -155,12 +189,12 @@ while run:
     print(alive)
     draw()
     vis()
-    compare()
+    #compare()
     
     
 
     #print(alive)
-    #draw()
+    draw()
     pygame.display.update()
 
 
