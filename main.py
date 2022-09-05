@@ -111,7 +111,8 @@ def vis():
         pr_in.clear()
         print("COMPARE() END")
 
-
+    pr_out.clear()
+    pr_in.clear()
     for i in all:
         
         abs = str(i).replace('(','').replace(')','').split(', ') 
