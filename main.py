@@ -134,18 +134,18 @@ def vis():
                 print(str(i) + " born")
                 pr_in.append(i)
                 compare()
-                return pr_in
+                #return pr_in
         else:
             if s >= 4:
                 print(str(i) + " dies")
                 pr_out.append(i)
                 compare()
-                return pr_out
+                #return pr_out
             elif s < 2:
                 print(str(i) + " dies")
                 pr_out.append(i)
                 compare()
-                return pr_out
+                #return pr_out
 
 
 
